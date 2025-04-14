@@ -27,7 +27,16 @@ let posts = [
 
 app.get("/posts", (req, res) => {
     res.render("index.ejs", { posts })
+})
 
+app.get("/posts/new", (req, res) => {
+    res.render("new.ejs")
+})
+
+app.post("/posts", (req, res) => {
+    let { username, content } = req.body;
+    posts.push({ username, content })
+    res.send("post req working")
 })
 
 app.listen(port, () => {
